@@ -1,0 +1,7 @@
+# Optional speaker separation; tested with Python 3.12 on Apple Silicon.
+# Keep torch and torchaudio on matching versions. This is not a full lockfile.
+torch==2.6.0
+torchaudio==2.6.0
+speechbrain==1.0.3
+numpy>=1.26,<3
+scipy>=1.11,<2

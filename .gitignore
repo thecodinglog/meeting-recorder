@@ -1,0 +1,47 @@
+# 빌드 결과물
+.build/
+build/
+
+# 로컬 개발 환경
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.swiftpm/
+
+# 비밀 값과 서명 파일
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+
+# 실제 녹음, 회의록, 모델과 배포 파일은 저장소에 넣지 않는다.
+recordings/
+회의녹음/
+models/
+*.m4a
+*.wav
+*.mp3
+*.aac
+*.aiff
+*.caf
+*.flac
+*.mp4
+*.mov
+*.m4v
+*회의록.txt
+.tracks.json
+.recording.json
+*.backup.json
+*.ckpt
+ggml-*.bin
+*.zip
+*.dmg
+*.app/
+*.log
+
+.DS_Store

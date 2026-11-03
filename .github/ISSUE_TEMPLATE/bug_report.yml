@@ -1,0 +1,25 @@
+name: 버그 제보
+description: 재현 단계와 사용 환경을 알려 주세요.
+body:
+  - type: markdown
+    attributes:
+      value: 실제 녹음·회의록·개인정보는 첨부하지 마세요. 보안 취약점은 SECURITY.md의 비공개 제보 방법을 이용하세요.
+  - type: textarea
+    id: environment
+    attributes:
+      label: 사용 환경
+      description: 앱 버전 또는 커밋, macOS·Xcode 버전, Apple Silicon 또는 Intel, 오디오 장치
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 단계
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 결과와 실제 결과
+    validations:
+      required: true

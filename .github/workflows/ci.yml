@@ -1,0 +1,37 @@
+name: macOS checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Show toolchain
+        run: swift --version
+      - name: Test with synthetic audio
+        run: swift test
+      - name: Build app with ad-hoc signing
+        env:
+          CODE_SIGN_IDENTITY: '-'
+        run: ./build.sh
+      - name: Check scripts and metadata
+        run: |
+          bash -n build.sh make_icon.sh
+          python3 -c 'import ast, pathlib; ast.parse(pathlib.Path("diarize/diarize.py").read_text())'
+          plutil -lint Info.plist
+          git diff --check
